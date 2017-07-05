@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [ -z "$RACKHD_TAG" ] ; then
+  RACKHD_TAG=master
+fi
+
+if [ -z "${RACKHD_BLOB_VERSION}" ] ; then
+  RACKHD_BLOB_VERSION=latest
+fi
+
+git clone --recursive https://github.com/RackHD/RackHD
+pushd RackHD
+git checkout ${RACKHD_TAG}
+popd
+
+# turn the packer/ansible config.json into one we can use.
+python3 xform_scripts/make_monorail_conf_files
+
+# Other helper files we will want in the rackhd-blob
+cp drop_in_files/* RackHD
+
+docker build RackHD -t infra-simmer/rackhd_blob:${RACKHD_BLOB_VERSION}

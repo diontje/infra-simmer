@@ -1,0 +1,52 @@
+version: '3'
+
+volumes:
+   monorail-static-files:
+
+services:
+  infra1:
+    image: infra-simmer/infrasim:${INFRASIMMER_SIM_TAG:-latest}
+    ports: ["5901:5901"]
+    command: ["bash", "runit.sh"]
+    privileged: true
+    networks:
+      zonctrol:
+        ipv4_address: 172.31.128.3
+      default:
+
+  mongo: # 27017
+    image: mongo:latest
+
+  rabbitmq: # 5672, 15672
+    image: rabbitmq:management
+
+  files:
+    image: rackhd/files:${RACKHD_TAG:-latest}
+    volumes:
+      - monorail-static-files:/RackHD/files
+
+  rackhd:
+    image: infra-simmer/rackhd_blob:${INFRASIMMER_RACKHD_TAG:-latest}
+    privileged: true
+    ports: ["9090:9090"]
+    volumes:
+      - monorail-static-files:/RackHD/on-tftp/static/tftp:ro
+      - monorail-static-files:/RackHD/on-http/static/http:ro
+    networks:
+      zonctrol:
+        ipv4_address: 172.31.128.2
+      default:
+    depends_on:
+      - files
+      - mongo
+      - rabbitmq
+
+
+networks:
+    zonctrol:
+        driver: bridge
+        ipam:
+          config:
+            - subnet: 172.31.128.0/20
+
+

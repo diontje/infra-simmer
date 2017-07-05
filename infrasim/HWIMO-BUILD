@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+
+if [ -z "${INFRASIMMER_VERSION}" ] ; then
+  INFRASIMMER_VERSION=latest
+fi
+
+docker build . -t infra-simmer/infrasim:${INFRASIMMER_VERSION}

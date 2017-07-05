@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+"""
+quick-script to grab base monorail config file and
+make into one that matches deployment.
+"""
+import json
+import pprint
+from collections import OrderedDict
+
+def do_file(fname):
+    pk_fname = "RackHD/docker/monorail/{}".format(fname)
+    with open(pk_fname, "r") as cff:
+        conf_json = json.load(cff)
+
+    # 1) change amqp to point to expected amqp server, if this file has this setting
+    if "amqp" in conf_json:
+        conf_json["amqp"] = "amqp://rabbitmq"
+
+    # 2) change mongo to point to expected mongo server, if this file has this setting
+    if "mongo" in conf_json:
+        conf_json["mongo"] = "mongodb://mongo/pxe"
+
+    # 3) change all references to 172.31.128.1 to 172.31.128.2 (the docker-net REALLY wants to own .1)
+
+    def fix_list(list_to_fix):
+        rl = []
+        for item in list_to_fix:
+            if isinstance(item, dict):
+                item = fix_dict(item)
+            rl.append(item)
+        return rl
+
+    def fix_dict(dict_to_fix):
+        ret_dict = OrderedDict()
+        for key, value in dict_to_fix.items():
+            if isinstance(value, list):
+                value = fix_list(value)
+            elif value == "172.31.128.1":
+                value = "172.31.128.2"
+            ret_dict[key] = value
+        return ret_dict
+
+
+    new_json = fix_dict(conf_json)
+    ofname = "RackHD/generated_{}".format(fname)
+    with open (ofname, "w") as ocf:
+        json.dump(new_json, ocf, indent=2)
+
+do_file("config.json")
+do_file("smiConfig.json")

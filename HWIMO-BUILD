@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+pushd rackhd
+./HWIMO-BUILD
+popd
+
+pushd infrasim
+./HWIMO-BUILD
+popd
