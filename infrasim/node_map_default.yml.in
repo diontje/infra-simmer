@@ -14,7 +14,7 @@ name: default
 #	s2600kp
 #	s2600tp
 #	s2600wtt
-type: dell_r730
+type: ${sim_type}
 
 compute:
 
@@ -80,8 +80,5 @@ compute:
             #   e1000       --default
             device: e1000
 
-            #Set MAC for this network, this MAC is generated with
-            #datetime as random seed, but you can specify yours
-            #
-            mac: 00:60:16:5e:64:b6
+            mac: ${mac_address}
 

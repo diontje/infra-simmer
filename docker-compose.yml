@@ -3,21 +3,18 @@ version: '3'
 volumes:
    monorail-static-files:
 
-services:
-  infra1:
-    image: infra-simmer/infrasim:${INFRASIMMER_SIM_TAG:-latest}
-    ports: ["5901:5901"]
-    command: ["bash", "runit.sh"]
-    privileged: true
-    networks:
-      zonctrol:
-        ipv4_address: 172.31.128.3
-      default:
+networks:
+    zonctrol:   # note: networks get assigned to interface based on sorted name. put this PAST 'default'
+        driver: bridge
+        ipam:
+          config:
+            - subnet: 172.31.128.0/20
 
-  mongo: # 27017
+services:
+  mongo:
     image: mongo:latest
 
-  rabbitmq: # 5672, 15672
+  rabbitmq:
     image: rabbitmq:management
 
   files:
@@ -40,13 +37,5 @@ services:
       - files
       - mongo
       - rabbitmq
-
-
-networks:
-    zonctrol:
-        driver: bridge
-        ipam:
-          config:
-            - subnet: 172.31.128.0/20
 
 

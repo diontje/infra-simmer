@@ -14,6 +14,12 @@ brctl addif br0 eth1
 ifconfig br0 up
 ifconfig eth1 promisc
 
+if [ ! -e node_map_default.yml ] ; then
+    mtype=${1:-dell_r730}
+    python mac_it.py --src-file=node_map_default.yml.in --dst-file=node_map_default.yml --sim-type=${mtype}
+fi
+cp node_map_default.yml /root/.infrasim/.node_map/default.yml
+
 # Now wait for rackhd service to actually come up
 last_err=1
 echo "starting wait for rackhd"
