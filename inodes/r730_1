@@ -1,11 +1,14 @@
+
 version: '3'
 
 services:
-  r730-1:
+  r730_1:
     image: infra-simmer/infrasim:${INFRASIMMER_SIM_TAG:-latest}
-    command: ["bash", "runit.sh", 'dell_r730']
+    command: ['bash', 'runit.sh', 'dell_r730}']
     privileged: true
     networks:
+      default:
       zonctrol:
         ipv4_address: 172.31.128.11
-      default:
+      zbmcnet:
+        ipv4_address: 172.32.128.11

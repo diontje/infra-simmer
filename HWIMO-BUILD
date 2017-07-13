@@ -9,3 +9,7 @@ popd
 pushd infrasim
 ./HWIMO-BUILD
 popd
+
+pushd smi-adds
+./HWIMO-BUILD
+popd

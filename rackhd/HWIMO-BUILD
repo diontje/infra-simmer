@@ -11,6 +11,10 @@ fi
 git clone --recursive https://github.com/RackHD/RackHD
 pushd RackHD
 git checkout ${RACKHD_TAG}
+git clone https://github.com/RackHD/ucs-service
+pushd ucs-service
+git checkout ${RACKHD_TAG}
+popd
 popd
 
 # turn the packer/ansible config.json into one we can use.

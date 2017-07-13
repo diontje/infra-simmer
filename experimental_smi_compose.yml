@@ -1,0 +1,137 @@
+version: '3'
+
+services:
+  service-registry:
+    image: consul:0.7.5
+    command: agent -server -ui -bind 0.0.0.0 -client 0.0.0.0 -log-level "info"
+    restart: always
+    environment:
+      # for secondary node set bootstrap to false
+      CONSUL_LOCAL_CONFIG: '{"bootstrap": true, "enable_syslog": false, "verify_server_hostname": false, "verify_incoming": false, "verify_outgoing": false }'
+    networks:
+      default:
+      zbmcnet:
+        ipv4_address: 172.32.128.10
+
+  consul-setup:
+    image: infra-simmer/consul_setup:${TAG:-latest}
+    depends_on:
+    - service-registry
+
+  gateway:
+    image: rackhd/gateway:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    ports:
+    - 46020:46020
+    networks:
+      default:
+      zbmcnet:
+        ipv4_address: 172.32.128.9
+    environment:
+    - _JAVA_OPTIONS=-Xmx64m -Xss256k
+
+  device-discovery:
+    image: rackhd/device-discovery:${TAG:-latest}
+    networks:
+      default:
+      zbmcnet:
+        ipv4_address: 172.32.128.8
+
+    depends_on:
+    - consul-setup
+    ports:
+    - 46002:46002
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx128m -Xss228k
+
+  dell-server-action:
+    image: rackhd/dell-server-action:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    ports:
+    - 46007:46007
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx64m -Xss256k
+
+  dell-chassis-inventory:
+    image: rackhd/dell-chassis-inventory:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    ports:
+    - 46001:46001
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx128m -Xss256k
+
+  dell-server-inventory:
+    image: rackhd/dell-server-inventory:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    ports:
+    - 46011:46011
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx128m -Xss256k
+
+  dell-server-configuration-profile:
+    image: rackhd/dell-server-configuration-profile:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    ports:
+    - 46018:46018
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx128m -Xss256k
+
+  dell-server-firmwareupdate:
+    image: rackhd/dell-server-firmwareupdate:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    ports:
+    - 46010:46010
+    privileged: true
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx128m -Xss256k
+
+  virtualnetwork:
+    image: rackhd/virtualnetwork:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    - postgresql
+    ports:
+    - 46016:46016
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx64m -Xss256k
+
+  virtualidentity:
+    image: rackhd/virtualidentity:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    - postgresql
+    ports:
+    - 46015:46015
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx64m -Xss256k
+
+  dell-powerthermal-monitoring:
+    image: rackhd/dell-powerthermal-monitoring:${TAG:-latest}
+    depends_on:
+    - consul-setup
+    ports:
+    - 46019:46019
+    environment:
+    - "SPRING_PROFILES_ACTIVE=consul"
+    - _JAVA_OPTIONS=-Xmx128m -Xss256k
+
+  postgresql:
+    image: postgres:9.6.1-alpine
+    ports:
+    - 5433:5432
+    environment:
+      - POSTGRES_PASSWORD=Dell123$$

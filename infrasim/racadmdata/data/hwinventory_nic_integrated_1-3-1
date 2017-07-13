@@ -1,0 +1,90 @@
+Device Description:                           Integrated NIC 1 Port 3 Partition 1
+PCI Vendor ID:                                14e4
+PCI Sub Vendor ID:                            1028
+PCI Device ID:                                165F
+PCI Sub Device ID:                            1f5b
+Current MAC Address:                          14:18:77:63:51:C4
+Permanent MAC Address:                        14:18:77:63:51:C4
+Virtual iSCSI MAC Address:                    Unavailable
+Permanent iSCSI MAC Address:                  Unavailable
+Virtual FIP MAC Address:                      Unavailable
+Permanent FIP MAC Address:                    Unavailable
+Permanent FCoE MAC Address:                   Unavailable
+Slot Type:                                    Not Applicable
+Data Bus Width:                               Unknown
+Slot Length:                                  Not Applicable
+Bus Number:                                   2
+DeviceNumber:                                 0
+Function Number:                              0
+Last Update Time:                             20160920155249.000000+000
+Last System Inventory Time:                   20161025194835.000000+000
+ProductName:                                  BRCM GbE 4P 5720-t rNDC
+WWN:                                          Unavailable
+VirtWWN:                                      Unavailable
+WWPN:                                         Unavailable
+VirtWWPN:                                     Unavailable
+Family Version:                               7.10.64
+Controller BIOS Version:                      1.36
+EFI Version:                                  17.0.5
+Max Bandwidth:                                0
+Min Bandwidth:                                0
+FCoE WWNN:                                    Unavailable
+Vendor Name:                                  Broadcom Corp
+Number of PCI-e Functions
+Supported per Port:                           1
+Number of PCI-e Functions
+Currently Enabled per Port:                   1
+Family Driver Version :                       linux:3.137.0
+Protocol:                                     NIC
+Link Duplex:                                  Not Applicable
+Link Speed:                                   Not Applicable
+Auto Negotiated:                              Disabled
+Transmit Flow Control:                        Off
+Receive Flow Control:                         Off
+Media Type:                                   BASE-T,
+NIC Mode:                                     Disabled
+FCoE Offload Mode:                            Disabled
+iSCSI Offload Mode:                           Disabled
+Max Number of IOs per session supported:      0
+Number of Max LOGINs per port:                0
+Max Number of exchanges:                      0
+Max NPIV WWN per port:                        0
+Number of Targets Supported:                  0
+Max Number of outstanding commands
+supported across all sessions:                0
+Flex Addressing:                              Capable
+UEFI:                                         Capable
+iSCSI Offload:                                Not Capable
+iSCSI Boot:                                   Capable
+TCP OffloadEngine:                            Not Capable
+FCoE:                                         Not Capable
+FCoE Boot:                                    Not Capable
+PXE Boot:                                     Capable
+SRIOV:                                        Not Capable
+Wake on LAN:                                  Capable
+Network Management Pass Through:              Capable
+OS2BMC PassThrough:                           Capable
+Energy Efficient Ethernet:                    Capable
+On Chip Thermal Sensor:                       Capable
+NPar:                                         Not Capable
+Remote PHY:                                   Not Capable
+Feature Licensing:                            Not Capable
+IPSec Offload:                                Not Capable
+MAC Sec:                                      Not Capable
+RDMA:                                         Not Capable
+Enhanced Transmission Selection:              Not Capable
+Priority Flow Control:                        Not Capable
+DCB Exchange Protocol:                        Not Capable
+Congestion Notification:                      Not Capable
+VEB-VEPA Single Channel:                      Not Capable
+VEB-VEPA Multi Channel:                       Not Capable
+EVB:                                          Not Capable
+BPE:                                          Not Capable
+Open Flow:                                    Not Capable
+Partition WOL Support:                        Not Capable
+Virtual Link Control:                         Not Capable
+Partition RX Flow Control:                    Not Capable
+Partition TX Flow Control:                    Not Capable
+TX Bandwidth Control Maximum:                 Not Capable
+TX Bandwidth Control Minimum:                 Not Capable
+Persistence Policy Capability:                Capable

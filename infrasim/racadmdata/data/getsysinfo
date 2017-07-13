@@ -1,0 +1,75 @@
+RAC Information:
+RAC Date/Time           = Tue Mar  7 11:59:40 2017
+
+Firmware Version        = 2.30.30.30
+Firmware Build          = 50
+Last Firmware Update    = 10/25/2016 15:14:04
+Hardware Version        = 0.01
+MAC Address             = 18:66:DA:52:2C:9C
+
+Common settings:
+Register DNS RAC Name   = 0
+DNS RAC Name            = idrac-28ZPBD2
+Current DNS Domain      =
+Domain Name from DHCP   = Enabled
+
+IPv4 settings:
+Enabled                 = 1
+Current IP Address      = 192.168.134.34
+Current IP Gateway      = 192.168.128.1
+Current IP Netmask      = 255.255.192.0
+DHCP Enabled            = 0
+Current DNS Server 1    = 0.0.0.0
+Current DNS Server 2    = 0.0.0.0
+DNS Servers from DHCP   = Disabled
+
+IPv6 settings:
+Enabled                 = 0
+Current IP Address 1    = ::
+Current IP Gateway      = ::
+Autoconfig              = 1
+Link Local IP Address   = ::
+Current IP Address 2    = ::
+Current IP Address 3    = ::
+Current IP Address 4    = ::
+Current IP Address 5    = ::
+Current IP Address 6    = ::
+Current IP Address 7    = ::
+Current IP Address 8    = ::
+Current IP Address 9    = ::
+Current IP Address 10   = ::
+Current IP Address 11   = ::
+Current IP Address 12   = ::
+Current IP Address 13   = ::
+Current IP Address 14   = ::
+Current IP Address 15   = ::
+DNS Servers from DHCPv6 = Disabled
+Current DNS Server 1    = ::
+Current DNS Server 2    = ::
+
+System Information:
+System Model            = PowerEdge R730
+System Revision         = I
+System BIOS Version     = 1.5.4
+Service Tag             = 28ZPBD2
+Express Svc Code        = 4897261766
+Host Name               = MINWINPC
+OS Name                 =
+OS Version              =
+Power Status            = ON
+Fresh Air Capable       = Yes
+
+Watchdog Information:
+Recovery Action         = None
+Present countdown value = 15 seconds
+Initial countdown value = 15 seconds
+
+System Thermal Information:
+EstimatedSystemAirflow  =  29 CFM
+EstimatedExhaustTemperature =  30 Degrees Centigrade
+
+Embedded NIC MAC Addresses:
+NIC.Integrated.1-3-1    Ethernet                = 14:18:77:63:51:C4
+NIC.Integrated.1-4-1    Ethernet                = 14:18:77:63:51:C5
+NIC.Integrated.1-2-1    Ethernet                = 14:18:77:63:51:C3
+NIC.Integrated.1-1-1    Ethernet                = 14:18:77:63:51:C2

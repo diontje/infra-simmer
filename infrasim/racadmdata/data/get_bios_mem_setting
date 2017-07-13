@@ -1,0 +1,11 @@
+[Key=BIOS.Setup.1-1#MemSettings]
+CorrEccSmi=Enabled
+MemOpMode=OptimizerMode
+MemTest=Disabled
+NodeInterleave=Disabled
+SnoopMode=EarlySnoop
+#SysMemSize=16 GB
+#SysMemSpeed=1866 Mhz
+#SysMemType=ECC DDR4
+#SysMemVolt=1.20 V
+#VideoMem=16 MB

@@ -21,7 +21,7 @@ COPY generated_config.json /opt/monorail/config.json
 COPY generated_smiConfig.json /opt/monorail/smiConfig.json
 COPY seawall.sh /opt/monorail/bin/
 COPY docker/dhcp/defaults/isc-dhcp-server /etc/defaults/isc-dhcp-server
-COPY docker/dhcp/config/dhcpd.conf /etc/dhcp/dhcpd.conf
+COPY dhcpd.conf /etc/dhcp/dhcpd.conf
 
 RUN npm install ${npm_debug} -g pm2
 RUN cd /RackHD/on-dhcp-proxy && \

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+git clone https://github.com/RackHD/RackHD
+pushd RackHD
+git checkout ${RACKHD_TAG:-master}
+popd
+
+mkdir -p consul-setup/config
+cp RackHD/docker/dell/config/* consul-setup/config
+
+# todo: modify this on the fly instead of checking in a new copy
+#   cp RackHD/docker/dell/set_config.sh consul-setup/
+
+docker build consul-setup -t infra-simmer/consul_setup:${SMI_CONSUL_SETUP_VERSION:-latest}

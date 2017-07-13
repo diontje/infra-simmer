@@ -1,0 +1,14 @@
+AutoBackup=Disabled
+#AutoDiscovery=Off
+AutoUpdate=Disabled
+BIOSRTDRequested=False
+CollectSystemInventoryOnRestart=Enabled
+#DiscoveryFactoryDefaults=Off
+IPChangeNotifyPS=Off
+#Licensed=Yes
+LifecycleControllerState=Enabled
+PartConfigurationUpdate=Apply always
+PartFirmwareUpdate=Match firmware of replaced part
+ProvisioningServer=
+#SystemID=600
+VirtualAddressManagementApplication=

@@ -82,3 +82,9 @@ compute:
 
             mac: ${mac_address}
 
+bmc:
+  interface: eth2
+
+racadm:
+  interface: eth2
+  data: /racadmdata
