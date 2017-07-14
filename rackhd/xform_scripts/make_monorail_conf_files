@@ -7,8 +7,8 @@ import json
 import pprint
 from collections import OrderedDict
 
-def do_file(fname):
-    pk_fname = "RackHD/docker/monorail/{}".format(fname)
+def do_file(file_in, fname):
+    pk_fname = "{}/{}".format(file_in, fname)
     with open(pk_fname, "r") as cff:
         conf_json = json.load(cff)
 
@@ -46,5 +46,5 @@ def do_file(fname):
     with open (ofname, "w") as ocf:
         json.dump(new_json, ocf, indent=2)
 
-do_file("config.json")
-do_file("smiConfig.json")
+do_file("xform_scripts", "config.json")
+do_file("RackHD/docker/monorail", "smiConfig.json")

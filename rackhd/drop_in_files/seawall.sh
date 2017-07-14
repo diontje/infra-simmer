@@ -72,6 +72,21 @@ trap shutdown SIGINT SIGTERM
 cd /opt/monorail/var/pm2
 pm2 start pm2.yml
 
+# this needs to come in via a secret or something. hacky hacky to fend off panic-attacks
+
+echo "starting wait for rackhd"
+last_err=1
+while [ ${last_err} -ne 0 ] ; do
+    echo "checking for rackhd..."
+    curl --silent --connect-timeout 1 localhost:8080/api/2.0/nodes > /dev/null
+    last_err=$?
+    if [ ${last_err} -ne 0 ] ; then
+	sleep 3
+    fi
+done
+sleep 5
+curl -ks -X POST -H "Content-Type:application/json" https://localhost:8443/api/current/users -d '{"username": "admin", "password": "admin123", "role": "Administrator"}' | python -m json.tool
+
 #pm2 logs
 sleep infinity&
 wait

@@ -5,4 +5,4 @@ if [ -z "${INFRASIMMER_VERSION}" ] ; then
   INFRASIMMER_VERSION=latest
 fi
 
-docker build . -t infra-simmer/infrasim:${INFRASIMMER_VERSION}
+docker build . -t uksuv/infra-simmer-compute:${INFRASIMMER_VERSION}

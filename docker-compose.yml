@@ -30,7 +30,7 @@ services:
   rackhd:
     image: uksuv/infra-simmer-rackhd:${INFRASIMMER_RACKHD_TAG:-latest}
     privileged: true
-    ports: ["9090:9090"]
+    ports: ["8080:8080", "8443:8443"]
     volumes:
       - monorail-static-files:/RackHD/on-tftp/static/tftp:ro
       - monorail-static-files:/RackHD/on-http/static/http:ro
@@ -42,15 +42,3 @@ services:
       - files
       - mongo
       - rabbitmq
-
-
-  r730-1:
-    image: uksuv/infra-simmer-compute:${INFRASIMMER_SIM_TAG:-latest}
-    command: ["bash", "runit.sh", 'dell_r730']
-    privileged: true
-    networks:
-      default:
-      zonctrol:
-        ipv4_address: 172.31.128.11
-      zbmcnet:
-        ipv4_address: 172.32.128.11

@@ -24,7 +24,8 @@ cp node_map_default.yml /root/.infrasim/.node_map/default.yml
 last_err=1
 echo "starting wait for rackhd"
 while [ ${last_err} -ne 0 ] ; do
-    curl --connect-timeout 1 rackhd:9090/api/2.0/nodes > /dev/null
+    echo "checking for rackhd..."
+    curl --silent --connect-timeout 1 rackhd:8080/api/2.0/nodes > /dev/null
     last_err=$?
     if [ ${last_err} -ne 0 ] ; then
         sleep 3

@@ -3,8 +3,8 @@ version: '3'
 
 services:
   r630_4:
-    image: infra-simmer/infrasim:${INFRASIMMER_SIM_TAG:-latest}
-    command: ['bash', 'runit.sh', 'dell_r630}']
+    image: uksuv/infra-simmer-compute:${INFRASIMMER_SIM_TAG:-latest}
+    command: ['bash', 'runit.sh', 'dell_r630']
     privileged: true
     networks:
       default:

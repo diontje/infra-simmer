@@ -7,8 +7,8 @@ version: '3'
 
 services:
   ${service_name}:
-    image: infra-simmer/infrasim:$${INFRASIMMER_SIM_TAG:-latest}
-    command: ['bash', 'runit.sh', '${infra_node_type}}']
+    image: uksuv/infra-simmer-compute:$${INFRASIMMER_SIM_TAG:-latest}
+    command: ['bash', 'runit.sh', '${infra_node_type}']
     privileged: true
     networks:
       default:
